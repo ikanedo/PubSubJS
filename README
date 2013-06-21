@@ -1,0 +1,25 @@
+A simple blueprint for a a JavaScript Publisher Subrcriber pattern.
+
+Sample code:
+
+;(function(){
+	"use strict";
+	
+	var observer = new PubSubHelper();
+	
+	var subscriberFn = function(){
+		
+	};
+	
+	// subscriber method
+	observer.subscribe(subscriberFn);
+	
+	window.onload = function(){
+		// notifier method
+		observer.notify();
+		
+		// unsubscribe method
+		observer.unsubscribe(subscriberFn);
+	};
+	
+})();
