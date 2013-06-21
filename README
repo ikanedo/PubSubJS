@@ -1,6 +1,6 @@
-A simple blueprint for a a JavaScript Publisher Subrcriber pattern.
+A simple blueprint for a a JavaScript Publisher Subscriber pattern.
 
-Sample code:
+Sample code usage:
 
 ;(function(){
 	"use strict";

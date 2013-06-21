@@ -1,11 +1,11 @@
 var PubSubHelper = function () {
-    /// <summary> Helper class which returns an 'observer' blueprint </summary>
+    /// <summary> Helper class which returns a pub/sub blueprint </summary>
     this.subscribers = [];
 };
 
 PubSubHelper.prototype = {
     subscribe: function (subscribeFn) {
-        /// <summary> function to be execution when notify is tiggered</summary>
+        /// <summary> function to be executed when notify is triggered</summary>
         /// <param name="subscribeFn" type="Function"> Function to be fired </param>
         /// <returns type="Array"> Returns an array containing all functions subscribed</returns>
 
@@ -45,8 +45,9 @@ PubSubHelper.prototype = {
     },
     notify: function () {
         /// <summary>
-        /// Executes all subscribers
+        /// Executes all subscribers. Optional parameters can be passed to be passed for all subscribers.
         /// </summary>
+		
         var args = Array.prototype.slice.call(arguments),
             subscribers = this.subscribers,
             len = subscribers.length,
