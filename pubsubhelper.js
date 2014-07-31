@@ -22,24 +22,21 @@ PubSubHelper.prototype = {
         /// <param name="unsubscribeFn" type="Function"> Function to be removed</param>
         /// <returns type="Array"> Returns an array containing all functions subscribed</returns>
 
+        var subscribers = this.subscribers,
+			i = 0,
+			len = subscribers.length;
 
         if (typeof unsubscribeFn !== "function") {
             throw new Error("Parameter passed is not a function");
         }
 
-        var subscribers = this.subscribers,
-			i = 0,
-			len = subscribers.length;
-
         // remove fn item from array if it matches the unsubscribeFn
-		for( ; i < len; i++) {
-		
-			if (subscribers[i] === unsubscribeFn) {
-				subscribers.splice(i, 1);
-				break;
-			}
-			
-		}
+    	for( ; i < len; i++) {
+    		if (subscribers[i] === unsubscribeFn) {
+    			subscribers.splice(i, 1);
+    			break;
+    		}
+    	}
 
         return subscribers;
     },
@@ -48,13 +45,13 @@ PubSubHelper.prototype = {
         /// Executes all subscribers. Optional parameters can be passed to be passed for all subscribers.
         /// </summary>
 		
-        var args = Array.prototype.slice.call(arguments),
+        var args = Array.prototype.slice.call(),
             subscribers = this.subscribers,
             len = subscribers.length,
 			i = 0;
 
         for ( ; i < len; i++) {
-            subscribers[i](args);
+            subscribers[i].apply(this, arguments);
         }
     }
 };
